@@ -11,7 +11,7 @@ class CharacterApiService {
 
   final String baseUrl = "https://rickandmortyapi.com/api/";
 
-  Dio _dio = Dio();
+  final Dio _dio = Dio();
 
   Future<List<Results>?> fetchAllCharacters() async {
     String url = "$baseUrl${CharacterApiEndPoints.character.name}";

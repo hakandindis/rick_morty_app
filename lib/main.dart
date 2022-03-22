@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_app/feature/character/view/character_view.dart';
+import 'package:rick_morty_app/feature/character/view/character_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: CharacterView(),
+      home: CharacterPage(),
     );
   }
 }
