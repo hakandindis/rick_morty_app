@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print, empty_catches, body_might_complete_normally_nullable
+
 import 'package:dio/dio.dart';
 import 'package:rick_morty_app/feature/character/model/characters_model.dart';
+import 'package:rick_morty_app/product/enums/character_filter_enums.dart';
 
 enum CharacterApiEndPoints { character }
-enum CharacterApiFilters { name, status, species, gender }
+// enum CharacterApiFilters { name, status, species, gender }
 
 class CharacterApiService {
   static CharacterApiService service = CharacterApiService._();
@@ -25,7 +28,45 @@ class CharacterApiService {
     }
   }
 
-  fetchSingleCharacter(String name) async {
-    String url = "$baseUrl${CharacterApiEndPoints.character.name}";
+  Future<List<Results>?> fetchCharacterByName(String name) async {
+    String url = "$baseUrl${CharacterApiEndPoints.character.name}/?name=$name";
+    print(url);
+
+    try {
+      Response? response = await _dio.get(url);
+      CharactersModel charactersModel = CharactersModel.fromJson(response.data);
+      return charactersModel.results;
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
+
+  Future<List<Results>?> fetchCharacterByGender(GenderTypes type) async {
+    String url =
+        "$baseUrl${CharacterApiEndPoints.character.name}/?gender=${type.name}";
+
+    print(url);
+    try {
+      Response? response = await _dio.get(url);
+      CharactersModel charactersModel = CharactersModel.fromJson(response.data);
+      return charactersModel.results;
+    } on DioError catch (e) {
+      print(e);
+    }
+  }
+
+  Future<List<Results>?> fetchCharacterByStatus(StatusTypes type) async {
+    String url =
+        "$baseUrl${CharacterApiEndPoints.character.name}/?status=${type.name}";
+
+    print(url);
+
+    try {
+      Response? response = await _dio.get(url);
+      CharactersModel charactersModel = CharactersModel.fromJson(response.data);
+      return charactersModel.results;
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 }
