@@ -38,7 +38,7 @@ class CharacterGridView extends StatelessWidget {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       crossAxisCount: 2,
-                      childAspectRatio: 0.8),
+                      childAspectRatio: 0.7),
                   itemBuilder: (context, index) {
                     Results? result = state.results[index];
                     return CharacterCard(result: result);

@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:rick_morty_app/feature/character/view/character_page.dart';
-import 'package:rick_morty_app/feature/home/view/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light().copyWith(
-          appBarTheme: AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      )),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+            elevation: 0, backgroundColor: Colors.blue,foregroundColor: Colors.white),
+      ),
       home: const CharacterPage(),
     );
   }
