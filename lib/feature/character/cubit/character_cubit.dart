@@ -16,8 +16,11 @@ class CharacterCubit extends Cubit<CharacterState> {
       final List<Results>? response =
           await CharacterApiService.service.fetchAllCharacters();
 
-      emit(state.copyWith(
-          results: response ?? [], pageStates: PageStates.success));
+      if (response!.isNotEmpty) {
+        emit(state.copyWith(results: response, pageStates: PageStates.success));
+      } else {
+        emit(state.copyWith(pageStates: PageStates.failure));
+      }
     } catch (e) {
       emit(state.copyWith(pageStates: PageStates.failure));
     }

@@ -21,7 +21,7 @@ class CharacterGridView extends StatelessWidget {
               ),
             );
           case PageStates.waiting:
-            return const Center(child: const CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           case PageStates.failure:
             return Center(
               child: Text(

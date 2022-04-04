@@ -20,7 +20,7 @@ class CharacterApiService {
     String url = "$baseUrl${CharacterApiEndPoints.character.name}";
     //print(url);
     try {
-      Response? response = await _dio.get(url);
+      Response? response = await _dio.get(url).timeout(Duration(seconds: 3));
       CharactersModel charactersModel = CharactersModel.fromJson(response.data);
       return charactersModel.results;
     } on DioError catch (e) {
