@@ -14,14 +14,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+            color: Colors.deepPurple[300],
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+          ),
           backgroundColor: Colors.transparent,
+          centerTitle: true,
           elevation: 0,
         ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-            elevation: 0, backgroundColor: Colors.blue,foregroundColor: Colors.white),
+            elevation: 0,
+            backgroundColor: Colors.deepPurple[300],
+            foregroundColor: Colors.white),
       ),
       home: const CharacterPage(),
     );
